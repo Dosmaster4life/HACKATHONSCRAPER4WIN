@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es2018",
+        "module": "commonJS",
+        "strict": true,
+        "checkJs": true,
+        "noUnusedLocals": true,
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "es2020.promise",
+            "es2015",
+            "es2016",
+            "es2019.array",
+            "es2020.string"
+        ],
+        "noUnusedParameters": true
+    },
+    "include": [
+        "./src/*.js"
+, "src/utils/search.js", "src/utils/walker.js", "src/utils/input-validation.js", "src/utils/misc-utils.js", "src/utils/background-enqueue.js", "src/helper-classes/places_cache.js", "src/helper-classes/max-crawled-places.js", "src/helper-classes/stats.js", "src/helper-classes/export-urls-deduper.js", "src/helper-classes/error-snapshotter.js", "src/utils/polygon.js"    ]
+}
