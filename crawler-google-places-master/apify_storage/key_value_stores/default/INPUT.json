@@ -1,0 +1,29 @@
+{
+    "searchStringsArray": [
+        
+    ],
+    "allPlacesNoSearch": false,
+    "maxCrawledPlaces": 100000000,
+    "language": "en",
+    "exportPlaceUrls": false,
+    "includeHistogram": false,
+    "includeOpeningHours": true,
+    "includePeopleAlsoSearch": false,
+    "additionalInfo": false,
+    "oneReviewPerRow": false,
+    "maxImages": 0,
+    "maxReviews": 0,
+    "scrapeReviewerName": false,
+    "scrapeReviewerId": false,
+    "scrapeReviewerUrl": false,
+    "scrapeReviewId": false,
+    "scrapeReviewUrl": false,
+    "maxPagesPerBrowser": 10,
+
+    "scrapeResponseFromOwnerText": false,
+    "proxyConfig": {
+        "useApifyProxy": false
+    },
+    "maxCrawledPlacesPerSearch": 1,
+    "maxPageRetries": 3
+}
