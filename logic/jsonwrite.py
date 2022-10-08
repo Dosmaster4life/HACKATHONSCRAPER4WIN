@@ -41,3 +41,4 @@ def jsonWritethenScrape(searchTermList = [ "Pizza", "Chicken", "Steak"],maxResul
 
     # create json
 
+jsonWritethenScrape()
