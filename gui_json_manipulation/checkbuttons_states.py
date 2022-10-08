@@ -13,11 +13,6 @@ class App(Tk):
         self.title("Checkboxes")
         self.geometry("1000x800")
 
-        style = ttk.Style(self)
-
-        def change_theme(self):
-            self.style.theme_use(self.selected_theme.get())
-
         # Create a reference to the checkbox boolean value for each state
         # AL-GA
         AL_bool = BooleanVar()
@@ -115,7 +110,6 @@ class App(Tk):
         Target location type radio buttons
         """
         radio_lf = LabelFrame(main_lf)
-        # radio_lf.place(relx=.5, rely=.5, anchor="n")
         radio_lf.grid(row=0, column=0)
 
         radio_label = Label(radio_lf, text = "Select a target location type:")
@@ -187,12 +181,12 @@ class App(Tk):
                     selected_states.append(state_name)
             return selected_states
 
-        # if self.radio_str_var.get() == "None":
-        #     # return search_query # Return search query as is entered by user
-        #     print("DEBUG: None only selected")
-        # else:
-        #     print("DEBUG States Selected:", get_selected_states())
-        #     # return self.radio_str_var.get()
+        if self.radio_str_var.get() == "None":
+            # return search_query # Return search query as is entered by user
+            print("DEBUG: None only selected")
+        else:
+            get_selected_states()
+            # return self.radio_str_var.get()
 
 
 # What to send Jeffey's function:
