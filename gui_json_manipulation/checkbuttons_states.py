@@ -106,13 +106,17 @@ class App(Tk):
             'Wisconsin': [WI_bool, 9, 3],'Wyoming': [WY_bool, 9, 4]
             }
 
+        main_lf = LabelFrame(self, highlightthickness=0, borderwidth=0)
+        main_lf.grid(row=0, column=0)
+        main_lf.place(anchor='center', relx=0.5, rely=0.5)
+
 
         """
         Target location type radio buttons
         """
-        radio_lf = LabelFrame(self)
+        radio_lf = LabelFrame(main_lf)
         # radio_lf.place(relx=.5, rely=.5, anchor="n")
-        radio_lf.grid(row=0, column=0, sticky="nsew")
+        radio_lf.grid(row=0, column=0)
 
         radio_label = Label(radio_lf, text = "Select a target location type:")
         radio_label.grid(row = 0, column = 0, sticky = NE)
@@ -135,21 +139,13 @@ class App(Tk):
         radio_button_city.grid(row = 0, column = 3)
         radio_button_county.grid(row = 0, column = 4)
 
-        # radio_button_none = Radiobutton(radio_lf, text = "None", value = 1, variable = self.radio_int_var)
-        # radio_button_state = Radiobutton(radio_lf, text = "State", value = 2, variable = self.radio_int_var)
-        # radio_button_city = Radiobutton(radio_lf, text = "City", value = 3, variable = self.radio_int_var)
-        # radio_button_county = Radiobutton(radio_lf, text = "County", value = 4, variable = self.radio_int_var)
-        # radio_button_none.grid(row = 0, column = 1)
-        # radio_button_state.grid(row = 0, column = 2)
-        # radio_button_city.grid(row = 0, column = 3)
-        # radio_button_county.grid(row = 0, column = 4)
-
-        main_lf = LabelFrame(self)
-        main_lf.place(relx=.5, rely=.5, anchor="c")
 
         """
         Select all states when "Select All" checkbutton clicked
         """
+        states_lf = LabelFrame(main_lf)
+        states_lf.grid(row=1, column=0)
+
         def select_all_states():
             # If toggle_all_states is true, check all state checkboxes to true, else check all state checkboxes to false
             if toggle_bool_var.get() == True:
@@ -163,7 +159,7 @@ class App(Tk):
 
         toggle_bool_var = BooleanVar()
         # Create checkbutton with text "Select All"
-        toggle_all_states = Checkbutton(main_lf, text = "Select All", variable = toggle_bool_var, command = select_all_states)
+        toggle_all_states = Checkbutton(states_lf, text = "Select All", variable = toggle_bool_var, command = select_all_states)
         toggle_all_states.grid()
         # select_all.grid(row = 0, column = 0, sticky = W)
 
@@ -178,11 +174,11 @@ class App(Tk):
                 for state_name, state_values in states_dict.items():
                     if state_values[1] == row and state_values[2] == column:
                         # create a checkbox for each state
-                        checkbox = Checkbutton(main_lf, text = state_name, variable = state_values[0])
+                        checkbox = Checkbutton(states_lf, text = state_name, variable = state_values[0])
                         checkbox.grid(row = row + 1, column = column)
                         checkbox.grid(sticky = W)
                         print("State Bool: ", state_name, state_values[0].get())
-
+        
         # Function that returns a list of selected states
         def get_selected_states():
             selected_states = []
@@ -191,13 +187,21 @@ class App(Tk):
                     selected_states.append(state_name)
             return selected_states
 
-# Send Jeffey's function
+        # if self.radio_str_var.get() == "None":
+        #     # return search_query # Return search query as is entered by user
+        #     print("DEBUG: None only selected")
+        # else:
+        #     print("DEBUG States Selected:", get_selected_states())
+        #     # return self.radio_str_var.get()
+
+
+# What to send Jeffey's function:
 # Pass in csv that is string of search quieries
-# If Target Locations by is "None" only pass in search quieries
+# If Target Locations by is "None" only pass in search queries
 
 
-
-# Pass in a string that has all keys whose chechbuttons are selected, which are strings of the state names, as string of list of states selected
+# What to send Grant's function:
+# Pass in a list that has all state names whose checkbuttons are selected, which are strings of the state names, as a list of states selected
 
 if __name__ == "__main__":
     app = App()
