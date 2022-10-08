@@ -30,7 +30,7 @@ Apify.main(async () => {
 
     const {
         // Search and Start URLs
-        startUrls, searchStringsArray = [], allPlacesNoSearchAction = '',
+        startUrls = [], searchStringsArray = [], allPlacesNoSearchAction = '',
         // Geolocation (country is deprecated but we will leave for a long time)
         lat, lng, country, countryCode, state, county, city, postalCode, zoom, customGeolocation,
         // browser and request options
@@ -43,7 +43,9 @@ Apify.main(async () => {
         // Scraping options
         includeHistogram = false, includeOpeningHours = false, includePeopleAlsoSearch = false,
         maxReviews = 0, maxImages = 0, exportPlaceUrls = false, additionalInfo = false,
-        maxCrawledPlaces = 99999999, maxCrawledPlacesPerSearch = maxCrawledPlaces,
+
+        maxCrawledPlacesPerSearch = 9999999,
+
         maxAutomaticZoomOut, reviewsTranslation = 'originalAndTranslated', oneReviewPerRow = false,
         // For some rare places, Google doesn't show all reviews unless in newest sorting
         reviewsSort = 'newest', reviewsStartDate,
@@ -72,9 +74,6 @@ Apify.main(async () => {
     const placesCache = new PlacesCache({ cachePlaces, cacheKey, useCachedPlaces });
     await placesCache.initialize();
 
-    const maxCrawledPlacesTracker = new MaxCrawledPlacesTracker(maxCrawledPlaces, maxCrawledPlacesPerSearch);
-    await maxCrawledPlacesTracker.initialize(Apify.events);
-
     /** @type {ExportUrlsDeduper | undefined} */
     let exportUrlsDeduper;
     if (exportPlaceUrls) {
@@ -92,7 +91,7 @@ Apify.main(async () => {
     let geolocation;
     let startUrlSearches;
     // We crate geolocation only for search. not for Start URLs
-    if (!Array.isArray(startUrls) || startUrls.length === 0) {
+    if (startUrls.length === 0) {
         // This call is async because it persists geolocation into KV
         ({ startUrlSearches, geolocation } = await prepareSearchUrlsAndGeo({
             lat,
@@ -119,7 +118,7 @@ Apify.main(async () => {
 
     if (startRequests.length === 0) {
         // Start URLs have higher preference than search
-        if (Array.isArray(startUrls) && startUrls.length > 0) {
+        if (startUrls.length > 0) {
             if (searchStringsArray?.length) {
                 log.warning('\n\n------\nUsing Start URLs disables search. You can use either search or Start URLs.\n------\n');
             }
@@ -128,7 +127,6 @@ Apify.main(async () => {
             const updatedStartUrls = await parseRequestsFromStartUrls(startUrls);
             const validStartRequests = getValidStartRequests(updatedStartUrls);
             validStartRequests.forEach((req) => startRequests.push(req));
-
         } else if (searchStringsArray?.length) {
             for (const searchString of searchStringsArray) {
                 // Sometimes users accidentally pass empty strings
@@ -170,7 +168,7 @@ Apify.main(async () => {
             }
 
             // use cached place ids for geolocation
-            for (const placeId of placesCache.placesInPolygon(geolocation, maxCrawledPlaces, searchStringsArray)) {
+            for (const placeId of placesCache.placesInPolygon(geolocation, maxCrawledPlacesPerSearch * searchStringsArray.length, searchStringsArray)) {
                 const searchString = searchStringsArray.filter(x => placesCache.place(placeId)?.keywords.includes(x))[0];
                 startRequests.push({
                     url: `https://www.google.com/maps/search/?api=1&query=${searchString}&query_place_id=${placeId}`,
@@ -193,6 +191,11 @@ Apify.main(async () => {
     } else {
         log.warning('Actor was restarted, skipping search step because it was already done...');
     }
+
+    // We have to define this class here because we can expand new requests during the preparation
+    const maxCrawledPlaces = (searchStringsArray.length || startRequests.length) * maxCrawledPlacesPerSearch;
+    const maxCrawledPlacesTracker = new MaxCrawledPlacesTracker(maxCrawledPlaces, maxCrawledPlacesPerSearch);
+    await maxCrawledPlacesTracker.initialize(Apify.events);
 
     // We enqueue small part of initial requests now and the rest in background
     await setUpEnqueueingInBackground(startRequests, requestQueue, maxCrawledPlacesTracker);

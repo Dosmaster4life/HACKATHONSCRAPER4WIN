@@ -3,7 +3,7 @@ import os
 
 import Scrape
 
-def jsonWritethenScrape(searchTermList = [ "Pizza", "Chicken", "Steak"],maxResults = 1000):
+def jsonWritethenScrape(searchTermList = [ "Pizza", "Chicken", "Steak"],maxResults = 1):
 
     data = {
         "searchStringsArray": searchTermList,

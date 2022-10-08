@@ -1,26 +1,26 @@
 [
   {
-    "url": "https://www.google.com/maps/search/mcdonalds",
-    "uniqueKey": "https://www.google.com/maps/search/mcdonalds",
+    "url": "https://www.google.com/maps/search/Pizza",
+    "uniqueKey": "https://www.google.com/maps/search/Pizza",
     "userData": {
       "label": "SEARCH",
-      "searchString": "mcdonalds"
+      "searchString": "Pizza"
     }
   },
   {
-    "url": "https://www.google.com/maps/search/chicken",
-    "uniqueKey": "https://www.google.com/maps/search/chicken",
+    "url": "https://www.google.com/maps/search/Chicken",
+    "uniqueKey": "https://www.google.com/maps/search/Chicken",
     "userData": {
       "label": "SEARCH",
-      "searchString": "chicken"
+      "searchString": "Chicken"
     }
   },
   {
-    "url": "https://www.google.com/maps/search/burger",
-    "uniqueKey": "https://www.google.com/maps/search/burger",
+    "url": "https://www.google.com/maps/search/Steak",
+    "uniqueKey": "https://www.google.com/maps/search/Steak",
     "userData": {
       "label": "SEARCH",
-      "searchString": "burger"
+      "searchString": "Steak"
     }
   }
 ]
