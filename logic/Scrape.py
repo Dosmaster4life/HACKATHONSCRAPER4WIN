@@ -8,19 +8,17 @@ def scrape():
     with open('scrape.txt', 'r') as file:
         data = file.read().replace('\n', '')
 
-    if (data == "false"):
+    if (data != "true"):
         # view the output of the shell command
 
        # print(subprocess.run(["cd", "../crawler-google-places-master", ";apify run --purge"], shell=True))
         with open('scrape.txt', 'w') as file:
             file.write("true")
         os.system("cd ../crawler-google-places-master;apify run --purge")
-        # when the shell command is done, set scrape.txt to false
-        # import and run combineJSON.py
         import combineJSON
         combineJSON.combine()
         # output scraping complete
-        print("Scraping Complete")
+        print("Scraping Complete, file written as output.xlsx")
         with open('scrape.txt', 'w'):
             file.write("false")
 
@@ -29,10 +27,13 @@ def scrape():
 
     else:
         os.system("cd ../crawler-google-places-master;apify run --purge")
-       # print(subprocess.run(["cd", "../crawler-google-places-master", ";apify run"], shell=True))
+        import combineJSON
+        combineJSON.combine()
+        # output scraping complete
+        print("Scraping Complete, file written as output.xlsx")
+        with open('scrape.txt', 'w'):
+            file.write("false")
 
-
-    # change subprocces directory
 
 
 scrape()
