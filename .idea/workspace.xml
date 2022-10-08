@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d9e176e-ea99-4aea-a07e-00f1866f445d" name="Changes" comment="added scraper completly fix">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler-google-places-master/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/crawler-google-places-master/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler-google-places-master/storage/key_value_stores/default/INPUT.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler-google-places-master/storage/key_value_stores/default/START-REQUESTS.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler-google-places-master/storage/request_queues/default/db.sqlite" beforeDir="false" />
+    <list default="true" id="6d9e176e-ea99-4aea-a07e-00f1866f445d" name="Changes" comment="updating scraper">
+      <change afterPath="$PROJECT_DIR$/.gitignore." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inputs/PLACE_ID.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/inputs/SEARCH.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
@@ -52,13 +46,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/crawler-google-places-master" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/crawler-google-places-master" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/logic" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -103,7 +97,7 @@
       <workItem from="1665233407937" duration="53000" />
       <workItem from="1665233463030" duration="76000" />
       <workItem from="1665233542563" duration="136000" />
-      <workItem from="1665233696827" duration="453000" />
+      <workItem from="1665233696827" duration="912000" />
     </task>
     <task id="LOCAL-00001" summary="Scrape.py">
       <created>1665193358452</created>
@@ -154,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665233302007</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updating scraper">
+      <created>1665234276211</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665234276211</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +181,7 @@
     <MESSAGE value="scrape" />
     <MESSAGE value="Scraper configure middleware that has a search term list and max result passed into it" />
     <MESSAGE value="added scraper completly fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="added scraper completly fix" />
+    <MESSAGE value="updating scraper" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating scraper" />
   </component>
 </project>
