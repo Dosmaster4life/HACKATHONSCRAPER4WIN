@@ -47,7 +47,7 @@ or_label.grid(column=0, row=2, columnspan=5, pady=5)
     
    
 
-def import_file(runner = False):
+def import_file():
         global file_display
         global filename
         filename = filedialog.askopenfilename(initialdir = "/", title = "Select file", filetypes = (("csv files", "*.csv"), ("all files", "*.*")))
@@ -55,8 +55,6 @@ def import_file(runner = False):
         df = pd.read_csv(filename)
         file_display = Label(top, text=filename)
         file_display.grid(column=1, row=4)
-        if runner:
-            file_display.destroy()
 
         global csv_list 
         csv_list = df.values.tolist()
