@@ -4,6 +4,7 @@ from tkinter import filedialog
 from tkinter import font
 from tkinter.ttk import Labelframe
 import pandas as pd
+
 #create a window
 window = Tk()
 window.title("Checkboxes")
@@ -41,14 +42,42 @@ search_entry.grid(column=1, row=1)
 or_label = Label(top, text="or")
 or_label.grid(column=0, row=2, columnspan=5, pady=5)
 
-#create import file button
-def import_file():
-    filename = filedialog.askopenfilename(initialdir = "/", title = "Select file", filetypes = (("csv files", "*.csv"), ("all files", "*.*")))
-    df = pd.read_csv(filename)
 
-# upload button
+
+    
+   
+
+def import_file(runner = False):
+        global file_display
+        global filename
+        filename = filedialog.askopenfilename(initialdir = "/", title = "Select file", filetypes = (("csv files", "*.csv"), ("all files", "*.*")))
+        
+        df = pd.read_csv(filename)
+        file_display = Label(top, text=filename)
+        file_display.grid(column=1, row=4)
+        if runner:
+            file_display.destroy()
+
+        global csv_list 
+        csv_list = df.values.tolist()
+    #create global varilist from csv with pandas
+    
+    # csv_list = df.values.tolist()
+
+# upload button that returns the list of csv values
 import_file_button = Button(top, text="Upload csv file", command=import_file)
 import_file_button.grid(column=0, row=3, columnspan=5, pady=10)
+
+## clear upload button and file display
+#clear = LabelFrame(top, borderwidth=0, highlightthickness=0)
+#clear.grid(column=0, row=4, pady=5)
+
+
+## clear button
+#clear_button = Button(clear, text="Clear", command=import_file)
+#clear_button.grid(column=0, row=0, pady=10)
+
+
 
 ### max results
 max_results = LabelFrame(center, borderwidth=0, highlightthickness=0)
@@ -77,10 +106,31 @@ max_results_entry.grid(column=1, row=0, pady=10)
 max_results_entry.config(validate="key", validatecommand=(window.register(validate_entry), '%P'))
 
 #### start button
+def start_info():
+
+    #return csv_list if not empty
+        global csv_list
+        if csv_list:
+            flattened_list = [item for sublist in csv_list for item in sublist]
+            print(flattened_list)
+        else:
+            #return list of entered variables
+            search_text = search_entry.get()
+            #make list from search_text
+            search_text_list = search_text.split(",")
+            #remove whitespace from list
+            search_text_list = [x.strip() for x in search_text_list]
+            csv_list = search_text_list
+
+        global max_results
+        max_results = max_results_entry.get()
+        print(max_results)
+    
+
 start = LabelFrame(center, borderwidth=0, highlightthickness=0)
 start.grid(column=0, row=2, pady=10)
 
-start_button = Button(start, text="Start")
+start_button = Button(start, text="Start", command=start_info)
 start_button.grid(column=0, row=0, pady=10)
 
 
