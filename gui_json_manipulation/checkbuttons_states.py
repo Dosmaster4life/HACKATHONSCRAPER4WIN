@@ -111,18 +111,13 @@ class App(Tk):
         """
         checkbutton_label = Label(lf, text = "Target locations by:")
         checkbutton_label.grid(row = 0, column = 0, sticky = W)
-        # checkbutton_label.place(relx=.5, rely=.5, anchor=W)
 
-        label1 = Label(self)
-        radio_button4 = Radiobutton(label1, text = "RADIO BUTTON", variable = 1, value = 1)
-        radio_button4.grid(row = 0, column = 0, sticky = W)
+        # checkbutton_test = Checkbutton(self, text = "TEST")
+        # checkbutton_test.place(x = 100, y = 100, anchor = NW)
 
         """
         Grid of checkboxes for each state
         """
-        #create label that says "Target locations by:"
-        # label = Label(window, text = "Target locations by:")
-        # label.grid()
 
         #create radio buttons
         radio_button = Radiobutton(lf, text = "None", value = 1)
@@ -148,7 +143,27 @@ class App(Tk):
                         checkbox.grid(row = row + 1, column = column)
                         checkbox.grid(sticky = W)
                         print("State Bool: ", state_name, state_values[0].get())
-        
+
+        """
+        Select all states when "Select All" checkbutton clicked
+        """
+
+        def select_all_states():
+            # If toggle_all_states is true, check all state checkboxes to true, else check all state checkboxes to false
+            if toggle_bool_var.get() == True:
+                for state_name, state_values in states_dict.items():
+                    state_values[0].set(True)
+            elif toggle_bool_var.get() == False:
+                for state_name, state_values in states_dict.items():
+                    state_values[0].set(False)
+
+            print("State Bool: ", state_name, state_values[0].get())
+
+        toggle_bool_var = BooleanVar()
+        # Create checkbutton with text "Select All"
+        toggle_all_states = Checkbutton(lf, text = "Select All", variable = toggle_bool_var, command = select_all_states).grid()
+        # select_all.grid(row = 0, column = 0, sticky = W)
+
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
 
