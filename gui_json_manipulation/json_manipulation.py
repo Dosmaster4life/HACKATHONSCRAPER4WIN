@@ -13,7 +13,7 @@ json_inputs_dict = json.load(open("crawler-google-places-master\storage\key_valu
 for key, value in json_inputs_dict.items():
     globals()[key] = value
 
-print("json_inputs_dict: ", json_inputs_dict)
+
 
 # list of all states in US
 states_list = [
