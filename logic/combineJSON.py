@@ -22,14 +22,29 @@ def combine():
     openingRevised.columns = ['Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
                               'Thursday']  # rename the columns
     openingRevised = openingRevised.applymap(lambda x: x['hours'] if isinstance(x, dict) else x)
-    # convert each phone number to this format: 123.456.7890 and with  extentions only if they exist
-    phone3 = allData_Flat.phone.apply(
-        lambda x: x.replace('(', '').replace(')', '').replace('-', '').replace(' ', '').replace('.',
-                                                                                                ''))  # remove all the characters that are not numbers
+    # convert each phone number to this format: 123.456.7890 and with  extentions only if they exist, if its null handle the error
+    phone3 = allData_Flat['phone'].apply(
+        lambda x: x.replace("(", "").replace(")", "").replace("-", "").replace(" ", "") if x is not None else x)
+
+     # remove all the characters that are not numbers and handle length errors for nonetype
+    def checkNone(z):
+        try:
+            if( "".join(filter(str.isdigit, z))):  
+                # if the string is not empty
+                if (len("".join(filter(str.isdigit, z))) > 10):
+                   return z
+                else:
+                    return None
+                
+
+            
+        except:
+            return z
+    # phone 3 in the format 123.456.7890 if an extension exists , the format will be 123.456.7890 ext. 1234
     phone3 = phone3.apply(
-        lambda x: x[:3] + '.' + x[3:6] + '.' + x[6:10] + ' ext.' + x[10:] if len(x) > 10 else x[:3] + '.' + x[
+        lambda x: x[:3] + '.' + x[3:6] + '.' + x[6:10] + ' ext.' + x[10:] if checkNone(x) else x[:3] + '.' + x[
                                                                                                             3:6] + '.' + x[
-                                                                                                                         6:10])  # add the periods and extension if it exists
+                                                                                                                         6:10] if x is not None else x)  # add the periods and extension if it exists
     # rename phone3 to phoneParsed
     phone3.name = 'Phone Parsed'
     allData_Flat = pd.concat([allData_Flat, openingRevised, phone3], axis=1)
@@ -42,3 +57,4 @@ def combine():
                  ], inplace=True)
 
     allData_Flat.to_excel("output.xlsx", index=False)
+combine()

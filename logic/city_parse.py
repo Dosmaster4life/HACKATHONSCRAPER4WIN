@@ -1,4 +1,6 @@
 import csv
+
+import jsonwrite
 data_file = "us_cities_states_counties.csv"
 def parse(data_file):
 
@@ -35,7 +37,7 @@ def return_script_query(business_list, state_list, search_type, state_dict):
     if search_type == "State":
         for each_state in state_list:
             for each_business in business_list:
-                query_list.append([each_business, each_state])
+                query_list.append([f"{each_business} {each_state}"])
 
         print(query_list)
             
@@ -43,7 +45,7 @@ def return_script_query(business_list, state_list, search_type, state_dict):
         for each_state in state_list:
             for each_city in state_dict[each_state]["cities"]:
                 for each_business in business_list:
-                    query_list.append([each_business, f"{each_city}, {each_state}"])
+                    query_list.append([f"{each_business} {each_city} {each_state}"])
 
 
 
@@ -52,17 +54,21 @@ def return_script_query(business_list, state_list, search_type, state_dict):
            for each_county in state_dict[each_state]["counties"]:
                 for each_business in business_list:
                     county = " ".join(word[0].upper()+word[1:] for word in each_county.lower().split(" "))
-                    query_list.append([each_business, f"{county}, {each_state}"])
+                    query_list.append([f"{each_business} {county} {each_state}"])
 
     return [item for sublist in query_list for item in sublist]
 
 def main():
     state_dict = parse(data_file)
     #print(state_dict)
-    query = return_script_query(["restaurants", "infant care", "refugee services"], ["Alaska"], "City", state_dict)
+    query = return_script_query(["restaurants", "infant care", "refugee services"], ["Alaska"], "County", state_dict)
     print(query)
 
 if __name__ == '__main__':
     main()
 
 
+#main()
+jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"State",parse("us_cities_states_counties.csv")),1)
+#jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"City",parse("us_cities_states_counties.csv")),1)
+#jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"County#",parse("us_cities_states_counties.csv")),1)

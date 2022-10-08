@@ -14,6 +14,7 @@ def jsonWritethenScrape(searchTermList = [ "Pizza", "Chicken", "Steak"],maxResul
         "includeHistogram": False,
         "includeOpeningHours": True,
         "includePeopleAlsoSearch": False,
+        "includeReviews": False,
         "additionalInfo": False,
         "oneReviewPerRow": False,
         "maxImages": 0,
@@ -41,4 +42,3 @@ def jsonWritethenScrape(searchTermList = [ "Pizza", "Chicken", "Steak"],maxResul
 
     # create json
 
-jsonWritethenScrape()
