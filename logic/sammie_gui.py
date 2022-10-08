@@ -16,7 +16,7 @@ class App(Tk):
 
         #create a window
         self.title("Pitch59 Business Scraper")
-        self.geometry("1000x1000")
+        self.geometry("1000x700")
 
    
 
@@ -110,12 +110,12 @@ class App(Tk):
 
         main_lf = LabelFrame(self, highlightthickness=0, borderwidth=0)
         main_lf.grid(row=1, column=0)
-        main_lf.place(anchor='n', relx=0.5, rely=0.5)
+        main_lf.place(anchor='n', relx=0.5, rely=0.35)
 
 
         center = LabelFrame(self, borderwidth=0, highlightthickness=0)
         center.grid(row=0, column=0)
-        center.place(anchor="s", relx=.5, rely=.5)
+        center.place(anchor="s", relx=.5, rely=0.3)
 
         top = LabelFrame(center, borderwidth=0, highlightthickness=0)
         top.grid(column=0, row=0)
