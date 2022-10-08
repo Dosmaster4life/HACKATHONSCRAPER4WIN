@@ -4,6 +4,8 @@ import subprocess
 import os
 import shutil
 import datetime
+
+
 def backup():
     now = datetime.datetime.now()
     date = now.strftime("%Y-%m-%d")
@@ -25,8 +27,10 @@ def scrape():
         # view the output of the shell command
 
        # print(subprocess.run(["cd", "../crawler-google-places-master", ";apify run --purge"], shell=True))
-        with open('scrape.txt', 'w') as file:
-            file.write("true")
+        f = open("scrape.txt", "a")
+        f.truncate(0)
+        f.write("true")
+        f.close()
         os.system("cd ../crawler-google-places-master;apify run --purge")
         try:
             import combineJSON
@@ -36,8 +40,10 @@ def scrape():
         except:
             print("An error occured")
             pass
-        with open('scrape.txt', 'w'):
-            file.write("false")
+        f = open("scrape.txt", "a")
+        f.truncate(0)
+        f.write("false")
+        f.close()
 
 
 
@@ -55,8 +61,10 @@ def scrape():
 
         # output scraping complete
 
-        with open('scrape.txt', 'w'):
-            file.write("false")
+        f = open("scrape.txt", "a")
+        f.truncate(0)
+        f.write("false")
+        f.close()
 
 
 
