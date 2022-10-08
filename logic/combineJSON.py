@@ -57,4 +57,3 @@ def combine():
                  ], inplace=True)
 
     allData_Flat.to_excel("output.xlsx", index=False)
-combine()
