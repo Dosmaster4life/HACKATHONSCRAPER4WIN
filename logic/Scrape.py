@@ -48,6 +48,7 @@ def scrape():
         f.truncate(0)
         f.write("false")
         f.close()
+        subprocess.call(['open', "output.xlsx"])
         #.startfile("output.xlsx")
        
 
@@ -71,14 +72,13 @@ def scrape():
         f.truncate(0)
         f.write("false")
         f.close()
-       # os.startfile("output.xlsx")
+        subprocess.call(['open', "output.xlsx"])
 
 
 
 # create a backup directory for all prevous scrapes
 
 
-scrape()
 
 
 

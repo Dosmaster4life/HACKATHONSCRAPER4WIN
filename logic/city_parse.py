@@ -69,6 +69,6 @@ if __name__ == '__main__':
 
 
 #main()
-jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"State",parse("us_cities_states_counties.csv")),1)
+jsonwrite.jsonWritethenScrape(return_script_query(["pizza"],["Alaska","Texas","Arizona"],"State",parse("us_cities_states_counties.csv")),1)
 #jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"City",parse("us_cities_states_counties.csv")),1)
-#jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"County#",parse("us_cities_states_counties.csv")),1)
+#jsonwrite.jsonWritethenScrape(return_script_query(["pizza","tacos","burgers"],["Alaska","Texas","Arizona"],"County",parse("us_cities_states_counties.csv")),1)
