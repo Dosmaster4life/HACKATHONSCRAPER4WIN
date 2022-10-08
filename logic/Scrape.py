@@ -17,12 +17,15 @@ def backup():
     shutil.copy("output.xlsx", "backup " + date + " " + time + "/output.xlsx")
     # output backup complete
     print("Backup Complete")
+    
 
 # read file scrape.txt in current directory and set it to a variable
 def scrape():
-    with open('scrape.txt', 'r') as file:
-        data = file.read().replace('\n', '')
-
+    data = 'true'
+    f = open('scrape.txt', 'r')
+    data = f.read()
+    f.close()
+   
     if (data != "true"):
         # view the output of the shell command
 
@@ -31,6 +34,7 @@ def scrape():
         f.truncate(0)
         f.write("true")
         f.close()
+      
         os.system("cd ../crawler-google-places-master;apify run --purge")
         try:
             import combineJSON
@@ -44,6 +48,8 @@ def scrape():
         f.truncate(0)
         f.write("false")
         f.close()
+        #.startfile("output.xlsx")
+       
 
 
 
@@ -65,13 +71,14 @@ def scrape():
         f.truncate(0)
         f.write("false")
         f.close()
+       # os.startfile("output.xlsx")
 
 
 
 # create a backup directory for all prevous scrapes
 
 
-
+scrape()
 
 
 
