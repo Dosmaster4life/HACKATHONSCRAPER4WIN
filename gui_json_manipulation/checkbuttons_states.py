@@ -1,19 +1,22 @@
 from tkinter import *
 from tkinter import ttk
 
-# CONSTANTS
-num_rows = 10
-num_columns = 5
-
 class App(Tk):
     def __init__(self):
         super().__init__()
+
+        # CONSTANTS
+        num_rows = 10
+        num_columns = 5
 
         #create a window
         self.title("Checkboxes")
         self.geometry("1000x800")
 
         style = ttk.Style(self)
+
+        def change_theme(self):
+            self.style.theme_use(self.selected_theme.get())
 
         # Create a reference to the checkbox boolean value for each state
         # AL-GA
@@ -103,51 +106,50 @@ class App(Tk):
             'Wisconsin': [WI_bool, 9, 3],'Wyoming': [WY_bool, 9, 4]
             }
 
-        lf = LabelFrame(self)
-        lf.place(relx=.5, rely=.5, anchor="c")
-        # lf.grid(row = 0, column = 0, sticky = S)
-        """
-        Checkbutton title text
-        """
-        checkbutton_label = Label(lf, text = "Target locations by:")
-        checkbutton_label.grid(row = 0, column = 0, sticky = W)
-
-        # checkbutton_test = Checkbutton(self, text = "TEST")
-        # checkbutton_test.place(x = 100, y = 100, anchor = NW)
 
         """
-        Grid of checkboxes for each state
+        Target location type radio buttons
         """
+        radio_lf = LabelFrame(self)
+        # radio_lf.place(relx=.5, rely=.5, anchor="n")
+        radio_lf.grid(row=0, column=0, sticky="nsew")
 
-        #create radio buttons
-        radio_button = Radiobutton(lf, text = "None", value = 1)
-        radio_button1 = Radiobutton(lf, text = "State", value = 2)
-        radio_button2 = Radiobutton(lf, text = "City", value = 3)
-        radio_button3 = Radiobutton(lf, text = "County", value = 4)
-        radio_button.grid(row = 0, column = 1)
-        radio_button1.grid(row = 0, column = 2)
-        radio_button2.grid(row = 0, column = 3)
-        radio_button3.grid(row = 0, column = 4)
+        radio_label = Label(radio_lf, text = "Select a target location type:")
+        radio_label.grid(row = 0, column = 0, sticky = NE)
 
-        """
-        Select all states 
-        """
-        for row in range(num_rows):
-            for column in range(num_columns):
-                # index = num_columns * row + column
-                # store dictionary key in a variable named state_name for each item in states_dict by dictionary values (state_row, state_column)
-                for state_name, state_values in states_dict.items():
-                    if state_values[1] == row and state_values[2] == column:
-                        # create a checkbox for each state
-                        checkbox = Checkbutton(lf, text = state_name, variable = state_values[0])
-                        checkbox.grid(row = row + 1, column = column)
-                        checkbox.grid(sticky = W)
-                        print("State Bool: ", state_name, state_values[0].get())
+       
+        self.radio_str_var = StringVar()
+        # Set default variable
+        self.radio_str_var.set("None")
+
+        def radio_button_callback():
+            print(self.radio_str_var.get())
+
+        #create 4 radio buttons that when clicked change value of radio_int_var
+        radio_button_none = Radiobutton(radio_lf, text = "None", variable = self.radio_str_var, value = "None", command = radio_button_callback)
+        radio_button_state = Radiobutton(radio_lf, text = "State", variable = self.radio_str_var, value = "State", command = radio_button_callback)
+        radio_button_city = Radiobutton(radio_lf, text = "City", variable = self.radio_str_var, value = "City", command = radio_button_callback)
+        radio_button_county = Radiobutton(radio_lf, text = "County", variable = self.radio_str_var, value = "County", command = radio_button_callback)
+        radio_button_none.grid(row = 0, column = 1)
+        radio_button_state.grid(row = 0, column = 2)
+        radio_button_city.grid(row = 0, column = 3)
+        radio_button_county.grid(row = 0, column = 4)
+
+        # radio_button_none = Radiobutton(radio_lf, text = "None", value = 1, variable = self.radio_int_var)
+        # radio_button_state = Radiobutton(radio_lf, text = "State", value = 2, variable = self.radio_int_var)
+        # radio_button_city = Radiobutton(radio_lf, text = "City", value = 3, variable = self.radio_int_var)
+        # radio_button_county = Radiobutton(radio_lf, text = "County", value = 4, variable = self.radio_int_var)
+        # radio_button_none.grid(row = 0, column = 1)
+        # radio_button_state.grid(row = 0, column = 2)
+        # radio_button_city.grid(row = 0, column = 3)
+        # radio_button_county.grid(row = 0, column = 4)
+
+        main_lf = LabelFrame(self)
+        main_lf.place(relx=.5, rely=.5, anchor="c")
 
         """
         Select all states when "Select All" checkbutton clicked
         """
-
         def select_all_states():
             # If toggle_all_states is true, check all state checkboxes to true, else check all state checkboxes to false
             if toggle_bool_var.get() == True:
@@ -161,11 +163,33 @@ class App(Tk):
 
         toggle_bool_var = BooleanVar()
         # Create checkbutton with text "Select All"
-        toggle_all_states = Checkbutton(lf, text = "Select All", variable = toggle_bool_var, command = select_all_states).grid()
+        toggle_all_states = Checkbutton(main_lf, text = "Select All", variable = toggle_bool_var, command = select_all_states)
+        toggle_all_states.grid()
         # select_all.grid(row = 0, column = 0, sticky = W)
 
-    def change_theme(self):
-        self.style.theme_use(self.selected_theme.get())
+
+        """
+        Grid of checkboxes for each state
+        """        
+        for row in range(num_rows):
+            for column in range(num_columns):
+                # index = num_columns * row + column
+                # store dictionary key in a variable named state_name for each item in states_dict by dictionary values (state_row, state_column)
+                for state_name, state_values in states_dict.items():
+                    if state_values[1] == row and state_values[2] == column:
+                        # create a checkbox for each state
+                        checkbox = Checkbutton(main_lf, text = state_name, variable = state_values[0])
+                        checkbox.grid(row = row + 1, column = column)
+                        checkbox.grid(sticky = W)
+                        print("State Bool: ", state_name, state_values[0].get())
+
+        # Function that returns a list of selected states
+        def get_selected_states():
+            selected_states = []
+            for state_name, state_values in states_dict.items():
+                if state_values[0].get() == True:
+                    selected_states.append(state_name)
+            return selected_states
 
 # Send Jeffey's function
 # Pass in csv that is string of search quieries
