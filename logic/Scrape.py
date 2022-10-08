@@ -2,6 +2,19 @@
 # Run shell command "apify run --purge" in the directory HACKATHONSCRAPER4WIN/crawler-google-places-master in python
 import subprocess
 import os
+import shutil
+import datetime
+def backup():
+    now = datetime.datetime.now()
+    date = now.strftime("%Y-%m-%d")
+    time = now.strftime("%H:%M")
+    # create a directory with the current date and time
+
+    os.mkdir("backup " + date + " " + time)
+    # copy the output file to the new directory
+    shutil.copy("output.xlsx", "backup " + date + " " + time + "/output.xlsx")
+    # output backup complete
+    print("Backup Complete")
 
 # read file scrape.txt in current directory and set it to a variable
 def scrape():
@@ -18,6 +31,7 @@ def scrape():
         import combineJSON
         combineJSON.combine()
         # output scraping complete
+        backup()
         print("Scraping Complete, file written as output.xlsx")
         with open('scrape.txt', 'w'):
             file.write("false")
@@ -30,14 +44,18 @@ def scrape():
         import combineJSON
         combineJSON.combine()
         # output scraping complete
+        backup()
         print("Scraping Complete, file written as output.xlsx")
         with open('scrape.txt', 'w'):
             file.write("false")
 
 
 
-scrape()
+# create a backup directory for all prevous scrapes
 
+
+
+backup()
 
 
 
