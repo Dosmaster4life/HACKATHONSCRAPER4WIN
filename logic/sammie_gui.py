@@ -116,6 +116,12 @@ def start_info():
         if csv_list:
             flattened_list = [item for sublist in csv_list for item in sublist]
             print(flattened_list)
+
+            max_results = max_results_entry.get()
+            print(max_results)
+            if(max_results == ""):
+                max_results = 1
+            jsonwrite.jsonWritethenScrape(city_parse.return_script_query(flattened_list,["Alaska","Texas","Arizona"],"State",city_parse.parse("us_cities_states_counties.csv")),max_results)
         else:
            
             #return list of entered variables
@@ -125,12 +131,19 @@ def start_info():
             #remove whitespace from list
             search_text_list = [x.strip() for x in search_text_list]
             csv_list = search_text_list
+            print(csv_list)
+        
+            max_results = max_results_entry.get()
+            print(max_results)
+            if(max_results == ""):
+                max_results = 1
+        
+            jsonwrite.jsonWritethenScrape(city_parse.return_script_query(list(csv_list),["Alaska","Texas","Arizona"],"State",city_parse.parse("us_cities_states_counties.csv")),max_results)
 
-        global max_results
-        max_results = max_results_entry.get()
-        print(max_results)
-
-        jsonwrite.jsonWritethenScrape(city_parse.return_script_query(csv_list,["Alaska","Texas","Arizona"],"State",city_parse.parse("us_cities_states_counties.csv")),max_results)
+     
+        
+        
+       
 
 start = LabelFrame(center, borderwidth=0, highlightthickness=0)
 start.grid(column=0, row=2, pady=10)
