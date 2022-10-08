@@ -1,0 +1,76 @@
+{
+  "title": "Chick-Fil-A",
+  "subTitle": null,
+  "price": null,
+  "menu": null,
+  "categoryName": "Chicken restaurant",
+  "address": "101 E Viking Drive MC 232A Brigham Young University, Rexburg, ID 83460",
+  "locatedIn": "Floor 1 · Hyrum Manwaring Student Center",
+  "neighborhood": "101 E Viking Drive MC 232A Brigham Young University",
+  "street": "101 E Viking Drive MC 232A Brigham Young University",
+  "city": "Rexburg",
+  "postalCode": "83460",
+  "state": "ID",
+  "countryCode": "US",
+  "plusCode": "R699+C4 Rexburg, Idaho",
+  "website": "https://www.byui.edu/university-services/food-services/food-venues",
+  "phone": "(208) 496-2800",
+  "temporarilyClosed": false,
+  "location": {
+    "lat": 43.8185042,
+    "lng": -111.7821827
+  },
+  "permanentlyClosed": false,
+  "totalScore": 4,
+  "isAdvertisement": false,
+  "rank": 1,
+  "placeId": "ChIJnUBxu5YLVFMRxh8h7tabWWs",
+  "categories": [
+    "Chicken restaurant"
+  ],
+  "cid": "7735385182405992390",
+  "url": "https://www.google.com/maps/place/Chick-Fil-A/@43.8185042,-111.7821827,17z/data=!3m1!4b1!4m5!3m4!1s0x53540b96bb71409d:0x6b599bd6ee211fc6!8m2!3d43.8185042!4d-111.7821827?hl=en",
+  "searchPageUrl": "https://www.google.com/maps/search/chicken/@43.818887,-111.797986,14z?hl=en",
+  "searchString": "chicken",
+  "scrapedAt": "2022-10-08T00:46:55.757Z",
+  "openingHours": [
+    {
+      "day": "Friday,",
+      "hours": "10:30AM to 7PM"
+    },
+    {
+      "day": "Saturday,",
+      "hours": "11AM to 6PM"
+    },
+    {
+      "day": "Sunday,",
+      "hours": "Closed"
+    },
+    {
+      "day": "Monday,",
+      "hours": "10:30AM to 7PM"
+    },
+    {
+      "day": "Tuesday,",
+      "hours": "10:30 to 11AM, 12 to 7PM"
+    },
+    {
+      "day": "Wednesday,",
+      "hours": "10:30AM to 7PM"
+    },
+    {
+      "day": "Thursday,",
+      "hours": "10:30AM to 7PM"
+    }
+  ],
+  "reviewsCount": 1,
+  "reviewsDistribution": {
+    "oneStar": 0,
+    "twoStar": 0,
+    "threeStar": 0,
+    "fourStar": 1,
+    "fiveStar": 0
+  },
+  "reviews": [],
+  "orderBy": []
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://www.google.com/maps/search/mcdonalds",
+    "uniqueKey": "https://www.google.com/maps/search/mcdonalds",
+    "userData": {
+      "label": "SEARCH",
+      "searchString": "mcdonalds"
+    }
+  },
+  {
+    "url": "https://www.google.com/maps/search/chicken",
+    "uniqueKey": "https://www.google.com/maps/search/chicken",
+    "userData": {
+      "label": "SEARCH",
+      "searchString": "chicken"
+    }
+  },
+  {
+    "url": "https://www.google.com/maps/search/burger",
+    "uniqueKey": "https://www.google.com/maps/search/burger",
+    "userData": {
+      "label": "SEARCH",
+      "searchString": "burger"
+    }
+  }
+]

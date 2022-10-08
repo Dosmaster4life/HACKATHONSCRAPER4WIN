@@ -1,0 +1,88 @@
+{
+  "title": "Burger King",
+  "subTitle": null,
+  "price": "$",
+  "menu": null,
+  "categoryName": "Restaurant",
+  "address": "944 University Blvd #2, Rexburg, ID 83440",
+  "locatedIn": null,
+  "neighborhood": "944 University Blvd #2",
+  "street": "944 University Blvd #2",
+  "city": "Rexburg",
+  "postalCode": "83440",
+  "state": "Idaho",
+  "countryCode": "US",
+  "plusCode": "R53Q+X8 Rexburg, Idaho",
+  "website": "https://burgerking.com/store-locator/store/restaurant_5033",
+  "phone": "(208) 356-5128",
+  "temporarilyClosed": false,
+  "location": {
+    "lat": 43.8049523,
+    "lng": -111.8116637
+  },
+  "permanentlyClosed": false,
+  "totalScore": 3.7,
+  "isAdvertisement": false,
+  "rank": 1,
+  "placeId": "ChIJsUVzx3oLVFMRW2sYF_A4hLg",
+  "categories": [
+    "Hamburger restaurant",
+    "Fast food restaurant",
+    "Restaurant"
+  ],
+  "cid": "13295814603735329627",
+  "url": "https://www.google.com/maps/place/Burger+King/@43.8049523,-111.8116637,17z/data=!3m1!4b1!4m5!3m4!1s0x53540b7ac77345b1:0xb88438f017186b5b!8m2!3d43.8049523!4d-111.8116637?hl=en",
+  "searchPageUrl": "https://www.google.com/maps/search/burger/@43.8194021,-111.7912524,14z?hl=en",
+  "searchString": "burger",
+  "scrapedAt": "2022-10-08T00:46:55.660Z",
+  "openingHours": [
+    {
+      "day": "Friday,",
+      "hours": "7AM to 11PM"
+    },
+    {
+      "day": "Saturday,",
+      "hours": "7AM to 11PM"
+    },
+    {
+      "day": "Sunday,",
+      "hours": "7AM to 11PM"
+    },
+    {
+      "day": "Monday,",
+      "hours": "7AM to 11PM"
+    },
+    {
+      "day": "Tuesday,",
+      "hours": "7AM to 11PM"
+    },
+    {
+      "day": "Wednesday,",
+      "hours": "7AM to 11PM"
+    },
+    {
+      "day": "Thursday,",
+      "hours": "7AM to 11PM"
+    }
+  ],
+  "reviewsCount": 687,
+  "reviewsDistribution": {
+    "oneStar": 78,
+    "twoStar": 55,
+    "threeStar": 109,
+    "fourStar": 199,
+    "fiveStar": 246
+  },
+  "reviews": [],
+  "orderBy": [
+    {
+      "name": "Burger King",
+      "url": "17444229393891942444"
+    },
+    {
+      "name": "burgerking.com",
+      "url": "burgerking.com",
+      "orderUrl": "https://burgerking.com/store-locator/store/restaurant_5033"
+    }
+  ]
+}
