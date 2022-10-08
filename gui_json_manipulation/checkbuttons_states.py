@@ -10,9 +10,8 @@ class App(Tk):
         super().__init__()
 
         #create a window
-        window = Tk()
-        window.title("Checkboxes")
-        window.geometry("1000x800")
+        self.title("Checkboxes")
+        self.geometry("1000x800")
 
         style = ttk.Style(self)
 
@@ -104,20 +103,32 @@ class App(Tk):
             'Wisconsin': [WI_bool, 9, 3],'Wyoming': [WY_bool, 9, 4]
             }
 
+        lf = LabelFrame(self)
+        lf.place(relx=.5, rely=.5, anchor="c")
+        # lf.grid(row = 0, column = 0, sticky = S)
+        """
+        Checkbutton title text
+        """
+        checkbutton_label = Label(lf, text = "Target locations by:")
+        checkbutton_label.grid(row = 0, column = 0, sticky = W)
+        # checkbutton_label.place(relx=.5, rely=.5, anchor=W)
+
+        label1 = Label(self)
+        radio_button4 = Radiobutton(label1, text = "RADIO BUTTON", variable = 1, value = 1)
+        radio_button4.grid(row = 0, column = 0, sticky = W)
 
         """
         Grid of checkboxes for each state
         """
-
         #create label that says "Target locations by:"
-        label = Label(window, text = "Target locations by:")
-        label.grid()
+        # label = Label(window, text = "Target locations by:")
+        # label.grid()
 
         #create radio buttons
-        radio_button = Radiobutton(window, text = "None", value = 1)
-        radio_button1 = Radiobutton(window, text = "State", value = 2)
-        radio_button2 = Radiobutton(window, text = "City", value = 3)
-        radio_button3 = Radiobutton(window, text = "County", value = 4)
+        radio_button = Radiobutton(lf, text = "None", value = 1)
+        radio_button1 = Radiobutton(lf, text = "State", value = 2)
+        radio_button2 = Radiobutton(lf, text = "City", value = 3)
+        radio_button3 = Radiobutton(lf, text = "County", value = 4)
         radio_button.grid(row = 0, column = 1)
         radio_button1.grid(row = 0, column = 2)
         radio_button2.grid(row = 0, column = 3)
@@ -128,12 +139,12 @@ class App(Tk):
         """
         for row in range(num_rows):
             for column in range(num_columns):
-                index = num_columns * row + column
+                # index = num_columns * row + column
                 # store dictionary key in a variable named state_name for each item in states_dict by dictionary values (state_row, state_column)
                 for state_name, state_values in states_dict.items():
                     if state_values[1] == row and state_values[2] == column:
                         # create a checkbox for each state
-                        checkbox = Checkbutton(window, text = state_name, variable = state_values[0])
+                        checkbox = Checkbutton(lf, text = state_name, variable = state_values[0])
                         checkbox.grid(row = row + 1, column = column)
                         checkbox.grid(sticky = W)
                         print("State Bool: ", state_name, state_values[0].get())
