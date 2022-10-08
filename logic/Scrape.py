@@ -21,7 +21,7 @@ def scrape():
     with open('scrape.txt', 'r') as file:
         data = file.read().replace('\n', '')
 
-    if (data != "true"):
+    if (data == "false" or data == ""):
         # view the output of the shell command
 
        # print(subprocess.run(["cd", "../crawler-google-places-master", ";apify run --purge"], shell=True))
@@ -40,7 +40,7 @@ def scrape():
 
 
     else:
-        os.system("cd ../crawler-google-places-master;apify run --purge")
+        os.system("cd ../crawler-google-places-master;apify run")
         import combineJSON
         combineJSON.combine()
         # output scraping complete
@@ -55,7 +55,7 @@ def scrape():
 
 
 
-backup()
+scrape()
 
 
 
