@@ -2,7 +2,8 @@ import pandas as pd
 import json
 import glob,os
 
-json_Folder = 'data/' # copy the json files to this folder
+# json folder path 1 directory up from this file
+json_Folder = '../crawler-google-places-master/storage/datasets/default'
 json_Type = os.path.join(json_Folder, '*.json') # get all the json files in the folder
 json_File_List = glob.glob(json_Type) # create a list of the json files
 Data = []
