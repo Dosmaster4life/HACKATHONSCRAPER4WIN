@@ -21,18 +21,21 @@ def scrape():
     with open('scrape.txt', 'r') as file:
         data = file.read().replace('\n', '')
 
-    if (data == "false" or data == ""):
+    if (data != "true"):
         # view the output of the shell command
 
        # print(subprocess.run(["cd", "../crawler-google-places-master", ";apify run --purge"], shell=True))
         with open('scrape.txt', 'w') as file:
             file.write("true")
         os.system("cd ../crawler-google-places-master;apify run --purge")
-        import combineJSON
-        combineJSON.combine()
-        # output scraping complete
-        backup()
-        print("Scraping Complete, file written as output.xlsx")
+        try:
+            import combineJSON
+            combineJSON.combine()
+            backup()
+            print("Scraping Complete, file written as output.xlsx")
+        except:
+            print("An error occured")
+            pass
         with open('scrape.txt', 'w'):
             file.write("false")
 
@@ -41,11 +44,17 @@ def scrape():
 
     else:
         os.system("cd ../crawler-google-places-master;apify run")
-        import combineJSON
-        combineJSON.combine()
+        try:
+            import combineJSON
+            combineJSON.combine()
+            backup()
+            print("Scraping Complete, file written as output.xlsx")
+        except:
+            print("An error occured")
+            pass
+
         # output scraping complete
-        backup()
-        print("Scraping Complete, file written as output.xlsx")
+
         with open('scrape.txt', 'w'):
             file.write("false")
 
@@ -55,7 +64,6 @@ def scrape():
 
 
 
-scrape()
 
 
 
