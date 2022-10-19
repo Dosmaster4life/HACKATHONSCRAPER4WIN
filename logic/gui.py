@@ -5,6 +5,9 @@ from tkinter import filedialog
 import pandas as pd
 import city_parse
 import jsonwrite
+# create multithread for the GUI to make it more responsive
+import threading
+
 
 class App(Tk):
     def __init__(self):
@@ -311,6 +314,8 @@ class App(Tk):
                     max_results = 1
                 
                 if(get_target_location() != "None"):
+                    
+
                     jsonwrite.jsonWritethenScrape(city_parse.return_script_query(list(csv_list),get_selected_states(),get_target_location(),city_parse.parse("us_cities_states_counties.csv")),max_results)
                 else:
                      jsonwrite.jsonWritethenScrape(list(csv_list),max_results)
@@ -328,7 +333,7 @@ class App(Tk):
         start = LabelFrame(main_lf, borderwidth=0, highlightthickness=0)
         start.grid(column=0, row=3, pady=10)
 
-        start_button = Button(start, text="Start", command=start_info)
+        start_button = Button(start, text="Start", command=threading.Thread(target=start_info).start)
         start_button.grid(column=0, row=0, pady=10)
 
 

@@ -56,7 +56,7 @@ def scrape():
 
 
     else:
-        os.system("cd ../crawler-google-places-master;apify run")
+        os.system("cd ../crawler-google-places-master;apify run --purge")
         try:
             import combineJSON
             combineJSON.combine()
