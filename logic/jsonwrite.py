@@ -8,7 +8,7 @@ def jsonWritethenScrape(searchTermList = [ "Pizza", "Chicken", "Steak"],maxResul
     data = {
         "searchStringsArray": searchTermList,
         "allPlacesNoSearch": False,
-        "maxCrawledPlaces": 100000000,
+
         "language": "en",
         "exportPlaceUrls": False,
         "includeHistogram": False,
